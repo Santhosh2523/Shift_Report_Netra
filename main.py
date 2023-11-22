@@ -18,13 +18,15 @@ while True:
     current_date = datetime.date.today()
     current_date1 = current_date.strftime("%d-%m-%Y")
     # print(current_date1)
+
+    # print(batch_no)
     # timing
-    A = f'{current_date1}' + " 02:00:00 PM"
-    A1 = f'{current_date1}' + " 02:05:00 PM"
-    B = f'{current_date1}' + " 10:00:00 PM"
-    B1 = f'{current_date1}' + " 10:05:00 PM"
-    C = f'{current_date1}' + " 06:00:00 AM"
-    C1 = f'{current_date1}' + " 06:05:00 AM"
+    A = f'{current_date1}' + " 06:00:00 AM"
+    A1 = f'{current_date1}' + " 02:00:00 PM"
+    B = f'{current_date1}' + " 02:00:00 PM"
+    B1 = f'{current_date1}' + " 10:00:00 PM"
+    C = f'{current_date1}' + " 10:00:00 PM"
+    C1 = f'{current_date1}' + " 06:00:00 AM"
     # current_datetime = "17-10-2023 02:00:00 PM"
 
     if (A <= current_datetime <= A1) or (B <= current_datetime <= B1) or (C <= current_datetime <= C1):

@@ -17,13 +17,13 @@ def shiftA(batch_no):
         # print(current_date1)
         A = f'{current_date1}' + " 06:00:00 AM"
         # print(A)
-        A1 = f'{current_date1}' + " 06:01:00 AM"
+        A1 = f'{current_date1}' + " 02:00:00 PM"
         # print(A1)
-        query1 = f"select * from {batch_no} where ldate >= ? and ldate <= ?"
-        # print(query1)
+        query1 = f"select TOP 1 * from {batch_no} where ldate >= ? and ldate <= ? order by ldate ASC"
+        print(query1)
         cur.execute(query1, (A, A1))
         result1 = cur.fetchone()
-        # print(result1)
+        print(result1)
         if result1:
             _, var2, var3, var4, var5, var6, var7, var8, var9, var10 = result1
         else:
@@ -33,11 +33,11 @@ def shiftA(batch_no):
         # print(A)
         A21 = f'{current_date1}' + " 02:01:00 PM"
         # print(A1)
-        query2 = f"select * from {batch_no} where ldate >= ? and ldate <= ?"
-        # print(query1)
-        cur.execute(query2, (A2, A21))
+        query2 = f"select TOP 1 * from {batch_no} where ldate >= ? and ldate <= ? order by ldate DESC"
+        print(query1)
+        cur.execute(query2, (A1, A1))
         result2 = cur.fetchone()
-        # print(result2)
+        print(result2)
         if result2:
             _, var12, var13, var14, var15, var16, var17, var18, var19, var20 = result2
         else:
@@ -49,12 +49,15 @@ def shiftA(batch_no):
         for i in range(len(result1)):
             list1.append(result2[i] - result1[i])
 
-        # print(list1)
+        print(list1)
         # print("SHIFT - A Completed")
         return list1, result2, A
 
     except Exception as e:
         error_message = traceback.format_exc()  # Get the detailed error message
         write_error(error_message)
-        # print(error_message)
+        print(error_message)
         exit()
+
+
+shiftA(12345678)
